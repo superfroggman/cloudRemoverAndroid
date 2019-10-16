@@ -2,7 +2,10 @@ package anton.vastkustit.cloud_remover;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 public class Main3Activity extends AppCompatActivity {
@@ -14,5 +17,19 @@ public class Main3Activity extends AppCompatActivity {
 
         TextView textView = (TextView)findViewById(R.id.hahaha);
         textView.setText("tryckningar");
+
+        Intent intent = getIntent();
+        String action = intent.getAction();
+        String type = intent.getType();
+
     }
+
+    void handleSendImage(Intent intent) {
+        Uri imageUri = (Uri) intent.getParcelableExtra(Intent.EXTRA_STREAM);
+        if (imageUri != null) {
+            ImageView img= (ImageView) findViewById(R.id.image1);
+            //img.setImageResource(imageUri);
+        }
+    }
+
 }
