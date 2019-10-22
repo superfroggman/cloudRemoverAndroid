@@ -22,7 +22,7 @@ public class Main3Activity extends AppCompatActivity {
         String action = intent.getAction();
         String type = intent.getType();
 
-        //cooll
+        //coollll
 
     }
 
