@@ -22,7 +22,12 @@ public class Main3Activity extends AppCompatActivity {
         String action = intent.getAction();
         String type = intent.getType();
 
-        //coolll
+        if(Intent.ACTION_SEND.equals(action)) {
+            if ("text/plain".equals(type)) {
+                textView.setText(action);
+            }
+
+            }
 
     }
 
