@@ -24,10 +24,11 @@ public class Main3Activity extends AppCompatActivity {
 
         if (Intent.ACTION_SEND.equals(action)) {
             if ("text/plain".equals(type)) {
-                textView.setText(type); //Adding this just so I can push
+                textView.setText(intent.toString()); //Adding this just so I can push
             }
 
         }
+
 
     }
 
