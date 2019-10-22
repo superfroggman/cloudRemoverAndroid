@@ -15,21 +15,22 @@ public class Main3Activity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main3);
 
+        /*
         TextView textView = (TextView)findViewById(R.id.hahaha);
         textView.setText("tryckningar");
 
         Intent intent = getIntent();
         String action = intent.getAction();
         String type = intent.getType();
+         */
 
-    }
+        String shareBody = "Here is the share content body";
+        Intent sharingIntent = new Intent(android.content.Intent.ACTION_SEND);
+        sharingIntent.setType("text/plain");
+        sharingIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, "Subject Here");
+        sharingIntent.putExtra(android.content.Intent.EXTRA_TEXT, shareBody);
+        startActivity(Intent.createChooser(sharingIntent, getResources().getString(R.string.share_using)));
 
-    void handleSendImage(Intent intent) {
-        Uri imageUri = (Uri) intent.getParcelableExtra(Intent.EXTRA_STREAM);
-        if (imageUri != null) {
-            ImageView img= (ImageView) findViewById(R.id.image1);
-            //img.setImageResource(imageUri);
-        }
     }
 
 }
