@@ -15,19 +15,19 @@ public class Main3Activity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main3);
 
-        TextView textView = (TextView)findViewById(R.id.hahaha);
+        TextView textView = (TextView) findViewById(R.id.hahaha);
         textView.setText("tryckningar");
 
         Intent intent = getIntent();
         String action = intent.getAction();
         String type = intent.getType();
 
-        if(Intent.ACTION_SEND.equals(action)) {
+        if (Intent.ACTION_SEND.equals(action)) {
             if ("text/plain".equals(type)) {
                 textView.setText(action);
             }
 
-            }
+        }
 
     }
 
