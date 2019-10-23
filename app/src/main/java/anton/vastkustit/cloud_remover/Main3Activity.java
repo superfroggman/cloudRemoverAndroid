@@ -26,7 +26,7 @@ public class Main3Activity extends AppCompatActivity {
             if ("text/plain".equals(type)) {
                 Uri data = (Uri) intent.getExtras().get(Intent.ACTION_VIEW);
                 textView.setText("waaa"+data);
-
+                //haha
             }
 
         }
