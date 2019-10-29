@@ -8,6 +8,8 @@ import android.os.Bundle;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import java.util.Scanner;
+
 public class Main3Activity extends AppCompatActivity {
 
     @Override
@@ -22,9 +24,12 @@ public class Main3Activity extends AppCompatActivity {
         String action = intent.getAction();
         String type = intent.getType();
 
+
         if (Intent.ACTION_SEND.equals(action)) {
             if ("text/plain".equals(type)) {
-                textView.setText(intent.toString());
+                String dataText = intent.getClipData().getItemAt(0).getText().toString();
+                textView.setText(dataText);
+                //sask
             }
 
         }
