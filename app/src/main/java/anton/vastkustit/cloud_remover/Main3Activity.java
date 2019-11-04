@@ -3,6 +3,7 @@ package anton.vastkustit.cloud_remover;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.media.MediaMetadataRetriever;
 import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
@@ -10,6 +11,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.VideoView;
 
+import java.io.File;
 import java.util.Scanner;
 
 public class Main3Activity extends AppCompatActivity {
@@ -40,18 +42,24 @@ public class Main3Activity extends AppCompatActivity {
                 String vidData = intent.getClipData().getItemAt(0).getUri().toString();
                 videoView.setVideoPath(vidData);
                 videoView.start();
-                videoView.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-                    @Override
-                    public void onCompletion(MediaPlayer mp) {
-                        videoView.start();
-                    }
-                });
+
+                //removeCloud(vidData);
+
                 textView.setText(vidData);
                 //saska
             }
 
         }
 
+    }
+
+    void removeCloud(String vidData){
+        MediaMetadataRetriever retriever = new MediaMetadataRetriever();
+        retriever.setDataSource(vidData);
+
+        ImageView img = (ImageView) findViewById(R.id.image1);
+
+        img.setImageBitmap(retriever.getFrameAtTime(10000,MediaMetadataRetriever.OPTION_CLOSEST));
     }
 
 }
