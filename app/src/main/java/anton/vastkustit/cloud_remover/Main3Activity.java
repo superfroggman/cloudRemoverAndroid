@@ -29,7 +29,7 @@ public class Main3Activity extends AppCompatActivity {
             if ("text/plain".equals(type)) {
                 String dataText = intent.getClipData().getItemAt(0).getText().toString();
                 textView.setText(dataText);
-                //sask
+                //saska
             }
 
         }
