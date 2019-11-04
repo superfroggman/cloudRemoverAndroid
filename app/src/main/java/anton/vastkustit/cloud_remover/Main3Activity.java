@@ -39,7 +39,7 @@ public class Main3Activity extends AppCompatActivity {
                 videoView.setVideoPath(vidData);
                 videoView.start();
 
-                //removeCloud(vidData);
+                //removeCloud(vidData);!
 
                 textView.setText(vidData);
                 //saska
