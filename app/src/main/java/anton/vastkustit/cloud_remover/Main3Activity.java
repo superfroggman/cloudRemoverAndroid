@@ -32,6 +32,11 @@ public class Main3Activity extends AppCompatActivity {
                 //saska
             }
 
+            if ("video/*".equals(type)) {
+                textView.setText("tryckningar2");
+                //saska
+            }
+
         }
 
     }
