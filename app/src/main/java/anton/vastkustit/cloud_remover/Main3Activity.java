@@ -3,6 +3,7 @@ package anton.vastkustit.cloud_remover;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
 import android.widget.ImageView;
@@ -21,7 +22,7 @@ public class Main3Activity extends AppCompatActivity {
         TextView textView = (TextView) findViewById(R.id.hahaha);
         textView.setText("tryckningar");
 
-        VideoView videoView = (VideoView)findViewById(R.id.vidd);
+        final VideoView videoView = (VideoView)findViewById(R.id.vidd);
 
         Intent intent = getIntent();
         String action = intent.getAction();
@@ -39,6 +40,12 @@ public class Main3Activity extends AppCompatActivity {
                 String vidData = intent.getClipData().getItemAt(0).getUri().toString();
                 videoView.setVideoPath(vidData);
                 videoView.start();
+                videoView.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                    @Override
+                    public void onCompletion(MediaPlayer mp) {
+                        videoView.start();
+                    }
+                });
                 textView.setText(vidData);
                 //saska
             }
