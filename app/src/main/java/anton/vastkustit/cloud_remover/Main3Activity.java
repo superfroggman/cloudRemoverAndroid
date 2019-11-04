@@ -7,6 +7,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.VideoView;
 
 import java.util.Scanner;
 
@@ -20,6 +21,8 @@ public class Main3Activity extends AppCompatActivity {
         TextView textView = (TextView) findViewById(R.id.hahaha);
         textView.setText("tryckningar");
 
+        VideoView videoView = (VideoView)findViewById(R.id.vidd);
+
         Intent intent = getIntent();
         String action = intent.getAction();
         String type = intent.getType();
@@ -32,8 +35,11 @@ public class Main3Activity extends AppCompatActivity {
                 //saska
             }
 
-            if ("video/*".equals(type)) {
-                textView.setText("tryckningar2");
+            if ("video/mp4".equals(type)) {
+                String vidData = intent.getClipData().getItemAt(0).getUri().toString();
+                videoView.setVideoPath(vidData);
+                videoView.start();
+                textView.setText(vidData);
                 //saska
             }
 
