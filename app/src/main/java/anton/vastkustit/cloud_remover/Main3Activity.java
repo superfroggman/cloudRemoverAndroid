@@ -34,7 +34,7 @@ public class Main3Activity extends AppCompatActivity {
                 //saska
             }
 
-            if ("video/mp4".equals(type)) {
+            if ("video/*".equals(type)) {
                 String vidData = intent.getClipData().getItemAt(0).getUri().toString();
                 videoView.setVideoPath(vidData);
                 videoView.start();
