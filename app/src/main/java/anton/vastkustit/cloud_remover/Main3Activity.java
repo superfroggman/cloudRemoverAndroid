@@ -36,17 +36,19 @@ public class Main3Activity extends AppCompatActivity {
                 //saska
             }
 
-            if ("video/mp4".equals(type)) {
-                String vidData = intent.getClipData().getItemAt(0).getUri().toString();
-                videoView.setVideoPath(vidData);
+            if ("video/*".equals(type)) {
+                String videoPath = intent.getClipData().getItemAt(0).getUri().toString();
+                videoView.setVideoPath(videoPath);
                 videoView.start();
+
+                //replay stuff
                 videoView.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
                     @Override
                     public void onCompletion(MediaPlayer mp) {
                         videoView.start();
                     }
                 });
-                textView.setText(vidData);
+                textView.setText(videoPath);
                 //saska
             }
 
