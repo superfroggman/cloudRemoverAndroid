@@ -42,7 +42,7 @@ public class Main3Activity extends AppCompatActivity {
                 //removeCloud(vidData);!
 
                 textView.setText(vidData);
-                //saska
+                //saskap
             }
 
         }
