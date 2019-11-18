@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">Cloud-Remover</string>
     <string name="title_activity_main2">Main2Activity</string>
+    <string name="title_activity_main4">Main4Activity</string>
 </resources>
