@@ -15,7 +15,7 @@ import android.widget.VideoView;
 
 public class MainActivity extends AppCompatActivity {
 
-   ImageView imageView;
+   VideoView videoView;
     Button button;
     private static final int PICK_IMAGE = 100;
     Uri imageUri;
@@ -25,7 +25,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        imageView = (ImageView) findViewById(R.id.imageView);
+        videoView = (VideoView) findViewById(R.id.videoView);
         button = (Button) findViewById(R.id.button);
 
         button.setOnClickListener(new View.OnClickListener() {
@@ -46,7 +46,8 @@ public class MainActivity extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
         if (resultCode == RESULT_OK && requestCode == PICK_IMAGE) {
             imageUri = data.getData();
-            imageView.setImageURI(imageUri);
+            videoView.setVideoURI(imageUri);
+            videoView.start();
         }
     }
 }
