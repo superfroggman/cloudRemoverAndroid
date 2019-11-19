@@ -1,6 +1,7 @@
 package anton.vastkustit.cloud_remover;
 
 import androidx.appcompat.app.AppCompatActivity;
+import wseemann.media.FFmpegMediaMetadataRetriever;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -8,6 +9,7 @@ import android.media.MediaMetadataRetriever;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.widget.ImageView;
+import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.VideoView;
 
@@ -40,8 +42,8 @@ public class Main3Activity extends AppCompatActivity {
 
             if ("video/*".equals(type)) {
                 String videoLink = intent.getClipData().getItemAt(0).getUri().toString();
-                //videoView.setVideoPath(videoLink);
-                //videoView.start();
+                videoView.setVideoPath(videoLink);
+                videoView.start();
 
                 removeCloud(videoLink);
 
@@ -54,21 +56,14 @@ public class Main3Activity extends AppCompatActivity {
     }
 
     void removeCloud(String videoLink){
-        //MediaMetadataRetriever retriever = new MediaMetadataRetriever();
         System.out.println(videoLink);
 
-        Bitmap bmp = null;
-        //try {
-            MediaMetadataRetriever retriever = new  MediaMetadataRetriever();
-            retriever.setDataSource(videoLink, new HashMap<String, String>());
-            bmp = retriever.getFrameAtTime();
-        //} catch (Exception e) {
-          //  e.printStackTrace();
-        //}
+        FFmpegMediaMetadataRetriever med = new FFmpegMediaMetadataRetriever();
+        med.setDataSource(videoLink);
 
+        Bitmap bmp = med.getFrameAtTime(1000000, FFmpegMediaMetadataRetriever.OPTION_CLOSEST);
 
         ImageView img = (ImageView) findViewById(R.id.image1);
-
         img.setImageBitmap(bmp);
 
         //img.setImageBitmap(retriever.getFrameAtTime(10000,MediaMetadataRetriever.OPTION_CLOSEST));
