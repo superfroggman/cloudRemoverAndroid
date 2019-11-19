@@ -5,15 +5,10 @@ import wseemann.media.FFmpegMediaMetadataRetriever;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
-import android.media.MediaMetadataRetriever;
 import android.os.Bundle;
-import android.provider.MediaStore;
 import android.widget.ImageView;
-import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.VideoView;
-
-import java.util.HashMap;
 
 
 public class Main3Activity extends AppCompatActivity {
@@ -26,7 +21,7 @@ public class Main3Activity extends AppCompatActivity {
         TextView textView = (TextView) findViewById(R.id.hahaha);
         textView.setText("tryckningar");
 
-        final VideoView videoView = (VideoView)findViewById(R.id.vidd);
+        final VideoView videoView = (VideoView) findViewById(R.id.vidd);
 
         Intent intent = getIntent();
         String action = intent.getAction();
@@ -42,12 +37,14 @@ public class Main3Activity extends AppCompatActivity {
 
             if ("video/*".equals(type)) {
                 String videoLink = intent.getClipData().getItemAt(0).getUri().toString();
-                videoView.setVideoPath(videoLink);
-                videoView.start();
+                //videoView.setVideoPath(videoLink);
+                //videoView.start();
 
                 removeCloud(videoLink);
 
                 textView.setText(videoLink);
+
+                //DO NOT REMOVE saskapp!
                 //saskapp
             }
 
@@ -55,10 +52,11 @@ public class Main3Activity extends AppCompatActivity {
 
     }
 
-    void removeCloud(String videoLink){
+    void removeCloud(String videoLink) {
         System.out.println(videoLink);
 
         FFmpegMediaMetadataRetriever med = new FFmpegMediaMetadataRetriever();
+
         med.setDataSource(videoLink);
 
         Bitmap bmp = med.getFrameAtTime(1000000, FFmpegMediaMetadataRetriever.OPTION_CLOSEST);
@@ -68,7 +66,6 @@ public class Main3Activity extends AppCompatActivity {
 
         //img.setImageBitmap(retriever.getFrameAtTime(10000,MediaMetadataRetriever.OPTION_CLOSEST));
     }
-
 
 
 }
