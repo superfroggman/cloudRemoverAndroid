@@ -5,10 +5,15 @@ import wseemann.media.FFmpegMediaMetadataRetriever;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.net.Uri;
 import android.os.Bundle;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.VideoView;
+
+import java.io.FileDescriptor;
+import java.io.FileInputStream;
+import java.net.URI;
 
 
 public class Main3Activity extends AppCompatActivity {
@@ -36,13 +41,13 @@ public class Main3Activity extends AppCompatActivity {
             }
 
             if ("video/*".equals(type)) {
-                String videoLink = intent.getClipData().getItemAt(0).getUri().toString();
+                Uri videoLink = intent.getClipData().getItemAt(0).getUri();
                 //videoView.setVideoPath(videoLink);
                 //videoView.start();
 
                 removeCloud(videoLink);
 
-                textView.setText(videoLink);
+                //textView.setText(videoLink);
 
                 //DO NOT REMOVE saskapp!
                 //saskapp
@@ -52,13 +57,11 @@ public class Main3Activity extends AppCompatActivity {
 
     }
 
-    void removeCloud(String videoLink) {
+    void removeCloud(Uri videoLink) {
         System.out.println(videoLink);
 
         FFmpegMediaMetadataRetriever med = new FFmpegMediaMetadataRetriever();
-
-        med.setDataSource(videoLink);
-
+        med.setDataSource("https://marksism.space/fina_bilder/vid_haha.mp4");
         Bitmap bmp = med.getFrameAtTime(1000000, FFmpegMediaMetadataRetriever.OPTION_CLOSEST);
 
         ImageView img = (ImageView) findViewById(R.id.image1);
